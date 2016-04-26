@@ -17,5 +17,5 @@ How it works
 oc_cli introduces a new file in your OpenCart root directory: `oc_cli.php`. All you need to do is run this file from your command line with the appropriate parameters. A simple command looks like this:
 
 ```
-./oc_cli.php __<app>__ **<route-to-controller>**
+./oc_cli.php [APP] [ROUTE]
 ```
