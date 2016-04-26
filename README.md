@@ -22,7 +22,7 @@ oc_cli introduces a new file in your OpenCart root directory: `oc_cli.php`. All 
 
 **[APP]** stands for the application which you need to run. It can take one of the following values:
 - *catalog* : this will run the **[ROUTE]** of your front-end OpenCart catalog
-- *<name-of-admin-dir>* : this will run the **[ROUTE]** of your admin panel
+- */*<name-of-admin-dir>*/* : this will run the **[ROUTE]** of your admin panel
 
 ###### What about admin panel authentication?
 This is not needed. oc_cli allows you to run admin panel controllers without requiring a login to the admin panel. This allows you to run admin controllers with ease.
