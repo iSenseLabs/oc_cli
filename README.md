@@ -8,6 +8,14 @@ System Requirements
 
 Installation
 --------------
-Just copy everything from the /upload directory to your OpenCart root directory. No original OpenCart files
+Just copy everything from the /upload directory to your OpenCart root directory. No original OpenCart files will be overwritten.
 
-... to be continued
+That's all!
+
+How it works
+--------------
+oc_cli introduces a new file in your OpenCart root directory: `oc_cli.php`. All you need to do is run this file from your command line with the appropriate parameters. A simple command looks like this:
+
+```
+./oc_cli.php **<app>** **<route-to-controller>**
+```
