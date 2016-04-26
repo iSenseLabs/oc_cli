@@ -40,7 +40,21 @@ $ php ./oc_cli.php admin module/test/cron_task
 Tips and tricks for developers
 --------------------------
 1. Note that oc_cli defines a constant called **OPENCART_CLI_MODE** which can be a boolean TRUE/FALSE. You can use this constant in your custom controllers to check if you are running in CLI mode. We strongly suggest you implement such a check in your controllers if you wish to avoid direct access from a web browser.
+
 2. As you see from the examples above, the entry point is a simple PHP file. To simplify your command line experience, you can create a BASH wrapper.
+
+3. oc_cli introduces the function `oc_cli_output`. This function can be used to output your CLI messages, and also exit with a status if necessary.
+
+```
+string oc_cli_output ( string $message [, int $exit_status = NULL] )
+```
+Parameters:
+
+**$message**
+The message you need to echo in the command line.
+
+**$exit_status**
+If set to a value different than NULL, it will terminate the process with the PHP `exit` function and the status number which you provide.
 
 License
 --------------
