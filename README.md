@@ -39,8 +39,8 @@ $ php ./oc_cli.php admin module/test/cron_task
 
 Tips and tricks for developers
 --------------------------
-1) Note that oc_cli defines a constant called **OPENCART_CLI_MODE** which can be a boolean TRUE/FALSE. You can use this constant in your custom controllers to check if you are running in CLI mode. We strongly suggest you implement such a check in your controllers if you wish to avoid direct access from a web browser.
-2) As you see from the examples above, the entry point is a simple PHP file. To simplify your command line experience, you can create a BASH wrapper.
+1. Note that oc_cli defines a constant called **OPENCART_CLI_MODE** which can be a boolean TRUE/FALSE. You can use this constant in your custom controllers to check if you are running in CLI mode. We strongly suggest you implement such a check in your controllers if you wish to avoid direct access from a web browser.
+2. As you see from the examples above, the entry point is a simple PHP file. To simplify your command line experience, you can create a BASH wrapper.
 
 License
 --------------
