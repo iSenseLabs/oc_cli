@@ -7,6 +7,7 @@ System Requirements
 --------------
 - UNIX server (Recommended, since oc_cli has not been tested on Windows yet)
 - OpenCart 2.2
+- Command line access to `php`. You can see if you have it by running `which php`
 
 Installation
 --------------
@@ -19,7 +20,7 @@ How it works
 oc_cli introduces a new file in your OpenCart root directory: `oc_cli.php`. All you need to do is run this file from your command line with the appropriate parameters. A simple command looks like this:
 
 ```
-$ ./oc_cli.php [APP] [ROUTE]
+$ php ./oc_cli.php [APP] [ROUTE]
 ```
 
 **[APP]** stands for the application which you need to run. It can take one of the following values:
@@ -32,10 +33,37 @@ This is not needed. oc_cli allows you to run admin panel controllers without req
 ###### Some examples:
 
 ```
-$ ./oc_cli.php catalog common/home/test
-$ ./oc_cli.php admin module/test/cron_task
+$ php ./oc_cli.php catalog common/home/test
+$ php ./oc_cli.php admin module/test/cron_task
 ```
 
-Extra notes for developers
+Tips and tricks for developers
 --------------------------
-Note that oc_cli defines a constant called **OPENCART_CLI_MODE** which can be a boolean TRUE/FALSE. You can use this constant in your custom controllers to check if you are running in CLI mode. We strongly suggest you implement such a check in your controllers if you wish to avoid direct access from a web browser.
+1) Note that oc_cli defines a constant called **OPENCART_CLI_MODE** which can be a boolean TRUE/FALSE. You can use this constant in your custom controllers to check if you are running in CLI mode. We strongly suggest you implement such a check in your controllers if you wish to avoid direct access from a web browser.
+2) As you see from the examples above, the entry point is a simple PHP file. To simplify your command line experience, you can create a BASH wrapper.
+
+License
+--------------
+The MIT License (MIT)
+
+Copyright (c) 2016 iSenseLabs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
