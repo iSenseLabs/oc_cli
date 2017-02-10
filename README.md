@@ -35,6 +35,7 @@ This is not needed. oc_cli allows you to run admin panel controllers without req
 ```
 $ php ./oc_cli.php catalog common/home/test
 $ php ./oc_cli.php admin module/test/cron_task
+$ php ./oc_cli.php catalog oc_cli/welcome/hello thinh
 ```
 
 Tips and tricks for developers
