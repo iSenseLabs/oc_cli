@@ -1,7 +1,6 @@
 <?php
 
 class OC_CLI {
-    protected $event;
     protected $registry;
 
     public function __construct($registry) {
@@ -10,7 +9,6 @@ class OC_CLI {
         }
 
         $this->registry = $registry;
-        $this->event = $registry->get('event');
     }
 
     public function isActive() {
@@ -21,19 +19,21 @@ class OC_CLI {
         global $argv;
 
         if (empty($argv[2]) || $argv[2] == 'oc_cli/router') {
-            $route = 'common/oc_cli';
+            $route = $this->registry->get('config')->get('action_default');
         } else {
             $route = str_replace('../', '', (string)$argv[2]);
         }
 
+        $output = null;
+
         // Trigger the pre events
-        $result = $this->event->trigger('controller/' . $route . '/before', array(&$route, &$data));
+        $result = $this->registry->get('event')->trigger('controller/' . $route . '/before', array(&$route, &$data, &$output));
         
         if (!is_null($result)) {
             return $result;
         }
         
-        // We dont want to use the loader class as it would make an controller callable.
+        // We dont want to use the loader class as it would make any controller callable.
         $action = new Action($route);
         
         // Any output needs to be another Action object.
@@ -41,7 +41,7 @@ class OC_CLI {
         $output = $action->execute($this->registry, $params); 
         
         // Trigger the post events
-        $result = $this->event->trigger('controller/' . $route . '/after', array(&$route, &$data, &$output));
+        $result = $this->registry->get('event')->trigger('controller/' . $route . '/after', array(&$route, &$data, &$output));
         
         if (!is_null($result)) {
             return $result;
@@ -59,6 +59,6 @@ class OC_CLI {
     }
 
     public function echo_welcome_message() {
-        oc_cli_output("This is the OpenCart CLI mode.");
+        oc_cli_output("This is OpenCart in CLI mode.");
     }
 }

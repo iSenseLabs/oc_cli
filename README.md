@@ -1,17 +1,24 @@
 # oc_cli
-Extension for OpenCart 2.2 which allows it to run in command line mode. Allows the user to run controllers through the command line for both admin and catalog pages. The admin authentication is bypassed.
+Extension for OpenCart allowing it to run in command line mode. Allows the user to run admin and/or catalog controllers directly through the command line. Admin authentication is bypassed.
 
-This extension can help you develop OpenCart controllers which can be run directly from the command line very easily.
+This extension can help you develop OpenCart controllers which can be run directly from the command line with ease.
 
 System Requirements
 --------------
-- UNIX server (Recommended, since oc_cli has not been tested on Windows yet)
-- OpenCart 2.2
+- UNIX server (oc_cli has not been tested on Windows yet)
+- OpenCart 2.2.0.0 to OpenCart 2.3.0.2
 - Command line access to `php`. You can see if you have it by running `which php`
+- "cli" PHP Server API (SAPI)
 
 Installation
 --------------
 Just copy everything from the /upload directory to your OpenCart root directory. No original OpenCart files will be overwritten.
+
+Make sure to add execute permissions to the file oc_cli.php:
+
+```
+$ chmod +x ./oc_cli.php
+```
 
 That's all!
 
@@ -23,19 +30,23 @@ oc_cli introduces a new file in your OpenCart root directory: `oc_cli.php`. All 
 $ php ./oc_cli.php [APP] [ROUTE] [param1] [param2] ...
 ```
 
-**[APP]** stands for the application which you need to run. It can take one of the following values:
-- *catalog* : this will run the **[ROUTE]** of your front-end OpenCart catalog
-- *name-of-admin-dir* : this will run the **[ROUTE]** of your admin panel
+**[APP]** stands for the application you will run. It can take exactly one of the following values:
+- *catalog* : this will run **[ROUTE]** from your front-end OpenCart catalog
+- *name-of-admin-dir* : this will run **[ROUTE]** in your admin panel
+
+**[ROUTE]** : the route you wish to execute, for example: `oc_cli/welcome`
+
+**[param1]**, **[param2]** : Optional parameters which you may pass to your controllers.
 
 ###### What about admin panel authentication?
-This is not needed. oc_cli allows you to run admin panel controllers without requiring a login to the admin panel. This allows you to run admin controllers with ease.
+This is not necessary. oc_cli allows you to run admin panel controllers without requiring a login to the admin panel. This allows you to run admin controllers with ease.
 
 ###### Some examples:
 
 ```
 $ php ./oc_cli.php catalog common/home/test
 $ php ./oc_cli.php admin module/test/cron_task
-$ php ./oc_cli.php catalog oc_cli/welcome/hello thinh
+$ php ./oc_cli.php catalog oc_cli/welcome/hello FooBar
 ```
 
 Tips and tricks for developers
@@ -44,7 +55,7 @@ Tips and tricks for developers
 
 2. As you see from the examples above, the entry point is a simple PHP file. To simplify your command line experience, you can create a BASH wrapper.
 
-3. oc_cli introduces the function `oc_cli_output`. This function can be used to output your CLI messages, and also exit with a status if necessary.
+3. oc_cli introduces the function `oc_cli_output`. This function can be used to output your CLI messages. It may also exit with a status code if necessary.
 
 ```
 string oc_cli_output ( string $message [, int $exit_status = NULL] )
