@@ -20,7 +20,7 @@ How it works
 oc_cli introduces a new file in your OpenCart root directory: `oc_cli.php`. All you need to do is run this file from your command line with the appropriate parameters. A simple command looks like this:
 
 ```
-$ php ./oc_cli.php [APP] [ROUTE]
+$ php ./oc_cli.php [APP] [ROUTE] [param1] [param2] ...
 ```
 
 **[APP]** stands for the application which you need to run. It can take one of the following values:
@@ -35,6 +35,7 @@ This is not needed. oc_cli allows you to run admin panel controllers without req
 ```
 $ php ./oc_cli.php catalog common/home/test
 $ php ./oc_cli.php admin module/test/cron_task
+$ php ./oc_cli.php catalog oc_cli/welcome/hello thinh
 ```
 
 Tips and tricks for developers

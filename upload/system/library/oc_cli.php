@@ -37,7 +37,8 @@ class OC_CLI {
         $action = new Action($route);
         
         // Any output needs to be another Action object.
-        $output = $action->execute($this->registry); 
+        $params = array_slice($argv, 3);
+        $output = $action->execute($this->registry, $params); 
         
         // Trigger the post events
         $result = $this->event->trigger('controller/' . $route . '/after', array(&$route, &$data, &$output));
