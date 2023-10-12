@@ -6,7 +6,8 @@ This extension can help you develop OpenCart controllers which can be run direct
 System Requirements
 --------------
 - UNIX server (oc_cli has not been tested on Windows yet)
-- OpenCart 2.2.0.0 to OpenCart 2.3.0.2
+- OpenCart 2.2.0.0 to OpenCart 3
+- Opencart 3 - Just remove /system/config/oc_cli.php then rename /system/config/oc_cli_3.php to /system/config/oc_cli.php
 - Command line access to `php`. You can see if you have it by running `which php`
 - "cli" PHP Server API (SAPI)
 
